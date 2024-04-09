@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Footprint Calculator</title>
+  <link rel="stylesheet" href="style3.css">
+  <style>
+  *{
+  margin: 0px;
+  padding: 0px;
+  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: rgb(255, 255, 255);
+       /* Set background color */
+       background-image: url(./images/back.jpg);
+    }
+
+    header {
+      background-color: rgb(255, 255, 255); /* Set header background color */
+      padding: 10px 20px; /* Add padding to header */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo img {
+      height: 4.3rem;
+      margin-right: 10px; /* Add margin to separate logo and text */
+    }
+
+    .header-logo a {
+      font-size: 1.2rem; /* Set font size */
+      font-weight: bold; /* Set font weight to bold */
+      text-decoration: none; /* Remove underline */
+      color: black; /* Set color */
+    }
+
+    .header-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .container{
+      display: flex;
+      flex-direction: row;
+      background-color: transparent;
+    }
+
+    .home-links{
+      margin-top: 20px;
+    }
+
+    .home-links a {
+      text-decoration: none; /* Remove underline */
+      color: inherit; /* Inherit text color */
+      cursor: pointer; /* Change cursor to pointer on hover */
+      transition: color 0.3s ease; /* Add smooth color transition */
+      margin-right: 4px; /* Add margin between links */
+      padding-right: 4px; /* Add padding to visually separate links */
+      border-right: 1px solid #ccc; /* Add border between links */
+    }
+
+    .home-links a:last-child {
+      margin-right: 0; /* Remove margin for the last link */
+      padding-right: 0; /* Remove padding for the last link */
+      border-right: none; /* Remove border for the last link */
+    }
+
+    /* Remove default anchor styles */
+    .navbarContainer .logo {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Style for mobile navigation */
+    .mobile-nav {
+      display: none;
+    }
+    #calculateBtn{
+      width: 200px;
+      margin-top: 420px;
+      margin-left: -1000px;
+    }
+    #home{
+      position: relative;
+      height: 350px;
+      width: 500px;
+      background-color: rgba(198, 201, 200, 0.767);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: -240px;
+      transition-duration: 0.3s;
+    }
+    #home:hover{
+      background-color: rgba(0, 255, 110, 0.621);
+    }
+    #car{
+      position: relative;
+      height: 350px;
+      width: 500px;
+      background-color: rgba(198, 201, 200, 0.767);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition-duration: 0.3s;
+    }
+    #car:hover{
+      background-color: rgba(0, 255, 110, 0.621);
+    }
+    #result{
+      margin-top: 430px;
+      width: 250px;
+    }
+    #name{
+      margin-bottom: 20px;
+    }
+    #navb{
+      position: relative;
+      margin: 10px;
+      border:2px solid black;
+      border-radius: 22px;
+      width: 90px;
+    }
+    #offsetbtn{
+      width: 190px;
+      margin-left: 280px;
+    }
+    @media screen and (max-width: 600px) {
+      /* Adjust card width for smaller screens */
+      .card {
+        width: calc(50% - 20px);
+      }
+
+      /* Show mobile navigation */
+      .home-desktop-menu {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+
+    /* Style for collapsible sections */
+    .section {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .section-header {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .input-group {
+      display: none;
+    }
+
+    .input-group.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="images/LOGO.jpg" style="border-radius: 50px;">
+            <a href="index.html">ECO-CHAIN</a>
+        </div>
+        <div class="header-links"> 
+            <nav class="home-links">
+                <span class="bodySmall" id="navb"><a href="milege.html">Calculate</a></span>
+                <span class="home-nav22 bodySmall" id="navb"><a href="reduce.html">Reduce</a></span>
+                <span class="home-nav32 bodySmall" id="navb"><a href="measure.html">Measures</a></span>
+                <span class="home-nav52 bodySmall" id="navb"><a href="contact.html">Contact</a></span>
+            </nav>
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav">
+                <nav class="home-links">
+                    <span class="bodySmall"><a href="milege.html">Calculate</a></span>
+                    <span class="home-nav22 bodySmall"><a href="reduce.html">Reduce</a></span>
+                    <span class="home-nav32 bodySmall"><a href="measure.html">Measures</a></span>
+                    <span class="home-nav52 bodySmall"><a href="contact.html">Contact</a></span>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+  <div class="container">
+    <!-- Home Section -->
+    <div class="section" id="home">
+      <h2 class="section-header" onclick="toggleSection('home')">Organization</h2>
+      <div class="input-group">
+        <label for="employee">Employee Name: 
+        </label>
+        <input type="text" placeholder="Enter your name" name="empname" id="name">
+        <label>Select the vehicle: <input list="dom" placeholder="Select your vehicle" name="dom" ></label>
+        <datalist id="dom" class="list">
+          <option value="Bike"></option>
+          <option value="Car"></option>
+          <option value="Truck"></option>
+          <option value="Cycle/Walk"></option>
+        </datalist>
+        <label for="fuel">Fuel Consumption (Mileage):</label>
+        <input type="number" id="fuel" placeholder="Enter consumption (Mileage)">
+      </div>
+      <div class="input-group">
+        <label for="dist">Distance Covered (km):</label>
+        <input type="number" id="dist" placeholder="Enter distance (km)">
+      </div>
+    </div>
+
+    <!-- Car Section -->
+    <div class="section" id="car">
+      <h2 class="section-header" onclick="toggleSection('car')">Individual</h2>
+      <div class="input-group">
+        <form action="/calculate" method="post">
+        <label for="individual">Enter your name: </label>
+        <input type="text" name="indiname" placeholder="Enter the name" id="name">
+        <label>Select the vehicle: <input list="dom" placeholder="Select your vehicle" name="dom"></label>
+        <datalist id="dom" class="list">
+          <option value="Bike"></option>
+          <option value="Car"></option>
+          <option value="Truck"></option>
+          <option value="Cycle/Walk"></option>
+        </datalist>
+        <label for="fuelConsumption" >Fuel Consumption (Mileage):</label>
+        <input type="number" id="fuelConsumption" placeholder="Enter consumption (Mileage)">
+        </form>
+      </div>
+
+      <div class="input-group">
+        <form action="/calculate" method="post">
+        <label for="distance">Distance Covered (km):</label>
+        <input type="number" id="distance" placeholder="Enter distance (km)">
+        </form>
+      </div>
+    </div>
+
+    <button id="calculateBtn" onclick="reduce()">Calculate</button>
+    <div id="result">
+      <div id="result1"></div>
+      <div id="result2"></div>
+      <div id="result3"></div>
+    </div>
+  </div>
+<button id="offsetbtn" onclick="popup()">Offset</button>
+  <script src="reduce.js"></script>
+  <script>
+    let collaborationType = '';
+
+function toggleSection(sectionId) {
+  var section = document.getElementById(sectionId);
+  var inputGroups = section.getElementsByClassName('input-group');
+  for (var i = 0; i < inputGroups.length; i++) {
+    inputGroups[i].classList.toggle('active');
+  }
+}
+function popup() {
+    let Amount_Sequeration_Of_Trees = 22;
+    let Amount_CO2_Released = document.getElementById("result1").innerText.trim(); // Get the text content and remove any leading/trailing whitespace
+    let numericalValue = parseFloat(Amount_CO2_Released.match(/\d+(\.\d+)?/)); // Extract numerical value using regular expression
+    if (!isNaN(numericalValue) && numericalValue > 0 && numericalValue < 1) { 
+        // If the value is a valid number and between 0 and 1
+        let Trees_To_Be_Planted = 1; // Set the number of trees to 1
+        window.alert("The amount of trees to be planted: " + Trees_To_Be_Planted);
+    } else if (!isNaN(numericalValue)) {
+        // If the value is a valid number but not between 0 and 1
+        let Trees_To_Be_Planted = numericalValue / Amount_Sequeration_Of_Trees;
+        window.alert("The amount of trees to be planted: " + Trees_To_Be_Planted);
+    } else {
+        window.alert("Error: The CO2 value is not valid.");
+    }
+}
+
+document.getElementById("offsetbtn").addEventListener("click", popup);
+
+
+
+
+  if (sectionId === 'home') {
+    collaborationType = 'Organization';
+  } else if (sectionId === 'car') {
+    collaborationType = 'Individual';
+  }
+  </script>
+</body>
+</html>
